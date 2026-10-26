@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Bar — Click. Save. Drive.</title>
+  <style>
+    :root { --red: #d71920; --ink: #111318; --muted: #626875; --paper: #f5f6f8; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--paper); color: var(--ink); }
+    header { background: var(--ink); color: white; padding: 22px 6%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 1.7rem; font-weight: 900; letter-spacing: 1px; }
+    .brand span { color: var(--red); }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 700; font-size: .95rem; }
+    .hero { padding: 76px 6% 68px; background: linear-gradient(120deg, #17191f, #30343d); color: white; }
+    .eyebrow { color: #ff6268; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+    h1 { font-size: clamp(2.7rem, 7vw, 5.4rem); line-height: .98; max-width: 850px; margin: 18px 0; letter-spacing: -2px; }
+    h1 span { color: #ff343c; }
+    .hero p { font-size: 1.2rem; line-height: 1.6; color: #e1e3e8; max-width: 650px; }
+    .button { display: inline-block; margin-top: 18px; background: var(--red); color: white; border: 0; border-radius: 7px; padding: 14px 22px; font-size: 1rem; font-weight: 800; text-decoration: none; cursor: pointer; }
+    main { max-width: 1120px; margin: auto; padding: 44px 6%; }
+    .section-title { font-size: 2rem; margin: 0 0 10px; }
+    .sub { color: var(--muted); margin: 0 0 26px; line-height: 1.5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .card { background: white; border-radius: 14px; padding: 22px; box-shadow: 0 5px 20px #1113180d; border: 1px solid #e7e9ee; }
+    .icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; background: #ffe7e8; color: var(--red); font-size: 1.4rem; font-weight: 900; }
+    .card h3 { margin: 15px 0 8px; }
+    .card p { color: var(--muted); line-height: 1.5; }
+    .wallet { margin-top: 38px; }
+    .coupon { display:flex; justify-content:space-between; align-items:center; gap:16px; border: 1px dashed #c8ccd5; padding:16px; border-radius:10px; margin-top:12px; background:#fff; }
+    .coupon strong { display:block; }
+    .coupon small { color:var(--muted); display:block; margin-top:5px; }
+    .save { background:var(--ink); color:white; border:0; border-radius:6px; padding:10px 14px; font-weight:700; cursor:pointer; }
+    #savedList { padding-left:20px; color:var(--muted); }
+    footer { background:var(--ink); color:#d5d7dc; padding:25px 6%; text-align:center; margin-top:30px; }
+    @media (max-width:600px) { header { align-items:flex-start; flex-direction:column; } nav a { margin:0 14px 0 0; } .hero { padding-top:54px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">AUTO <span>BAR</span></div>
+    <nav><a href="#deals">Deals</a><a href="#wallet">My Wallet</a></nav>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">Your next deal starts here</div>
+    <h1>CLICK. SAVE.<br><span>DRIVE.</span></h1>
+    <p>Find automotive deals, save coupons, and discover offers from participating shops—all in one place.</p>
+    <a class="button" href="#deals">Explore Deals</a>
+  </section>
+  <main>
+    <section id="deals">
+      <h2 class="section-title">Deals worth pulling over for.</h2>
+      <p class="sub">A preview of how Auto Bar can bring automotive offers together. Sample offers below are placeholders.</p>
+      <div class="grid">
+        <article class="card"><div class="icon">%</div><h3>Oil Change Offer</h3><p>Save on your next oil change at a participating service shop.</p></article>
+        <article class="card"><div class="icon">★</div><h3>Detailing Special</h3><p>Find a deal to help your ride look its best inside and out.</p></article>
+        <article class="card"><div class="icon">⌖</div><h3>Local Auto Shops</h3><p>Discover nearby automotive businesses and their offers.</p></article>
+      </div>
+    </section>
+    <section class="wallet" id="wallet">
+      <h2 class="section-title">Your coupon wallet</h2>
+      <p class="sub">Try saving a sample coupon. This demo stores saved items in this browser only; it does not sync between devices or create an account.</p>
+      <div class="coupon"><div><strong>Sample: 10% off detailing</strong><small>Demo coupon · Not a redeemable offer</small></div><button class="save" onclick="saveCoupon()">Save coupon</button></div>
+      <h3>Saved coupons</h3>
+      <ul id="savedList"><li>No coupons saved yet.</li></ul>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> Auto Bar · Click. Save. Drive.</footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function saveCoupon() {
+      const key = 'autobar-demo-coupons';
+      const items = JSON.parse(localStorage.getItem(key) || '[]');
+      if (!items.includes('10% off detailing (sample)')) items.push('10% off detailing (sample)');
+      localStorage.setItem(key, JSON.stringify(items));
+      renderCoupons();
+    }
+    function renderCoupons() {
+      const items = JSON.parse(localStorage.getItem('autobar-demo-coupons') || '[]');
+      const list = document.getElementById('savedList');
+      list.innerHTML = '';
+      if (!items.length) { list.innerHTML = '<li>No coupons saved yet.</li>'; return; }
+      items.forEach(item => { const li = document.createElement('li'); li.textContent = item; list.appendChild(li); });
+    }
+    renderCoupons();
+  </script>
+</body>
+</html>
