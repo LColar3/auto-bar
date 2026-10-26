@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d71920">
+<meta name="description" content="Apply to become an Auto Bar Founding Business.">
+<title>Founding Business Registration | Auto Bar</title>
+<style>
+:root{--red:#e50914;--red-dark:#bf0710;--ink:#101114;--muted:#646873;--line:#e8e8eb;--paper:#f5f5f6;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+.wrap{width:min(960px,92%);margin:auto}header{background:#fff;border-bottom:1px solid var(--line)}
+.nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:block;width:230px;max-width:55vw}.brand img{display:block;width:100%;height:auto}
+.tagline{font-weight:700;color:var(--red);white-space:nowrap}
+.hero{padding:42px 0 24px;text-align:center}.eyebrow{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:800}
+h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;margin:10px 0 14px}p{color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 8px 28px #1011140a;margin:18px 0 44px}
+h2{font-size:1.25rem;margin:0 0 18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label{display:block;font-size:.92rem;font-weight:700;margin-bottom:6px}.field{margin-bottom:15px}
+input,select,textarea{width:100%;border:1px solid #d7d9df;border-radius:9px;padding:12px 13px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+.note{background:#fff5f5;border-left:4px solid var(--red);padding:13px 15px;border-radius:7px;color:#444;margin:18px 0}
+button{border:0;border-radius:9px;background:var(--red);color:#fff;font-size:1rem;font-weight:800;padding:14px 20px;cursor:pointer}
+button:hover{background:var(--red-dark)}.fine{font-size:.85rem}.actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+footer{text-align:center;padding:22px;color:var(--muted);font-size:.85rem}
+@media(max-width:640px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.nav{align-items:center}.tagline{font-size:.8rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="index.html" aria-label="Auto Bar home"><img src="autobar-logo.png" alt="Auto Bar — Click. Save. Drive."></a>
+<div class="tagline">Click. Save. Drive.</div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div class="eyebrow">Founding Business Program</div>
+<h1>Put Your Business in the Driver’s Seat.</h1>
+<p>Join the first group of businesses helping shape Auto Bar. Share your business details and tell us about the coupon or special offer you’d like customers to discover.</p>
+</section>
+<form class="card" action="#" method="post" onsubmit="event.preventDefault(); document.getElementById('form-note').hidden=false;">
+<h2>Business Information</h2>
+<div class="grid">
+<div class="field"><label for="business">Business name *</label><input id="business" name="business" required autocomplete="organization" placeholder="Your business name"></div>
+<div class="field"><label for="type">Business type *</label><select id="type" name="type" required><option value="">Choose a category</option><option>Auto repair and maintenance</option><option>Tires and wheels</option><option>Car wash and detailing</option><option>Auto parts and accessories</option><option>Dealership</option><option>Towing and roadside assistance</option><option>Other automotive service</option></select></div>
+<div class="field"><label for="contact">Contact person *</label><input id="contact" name="contact" required autocomplete="name" placeholder="Full name"></div>
+<div class="field"><label for="role">Role at business</label><input id="role" name="role" placeholder="Owner, manager, etc."></div>
+<div class="field"><label for="email">Business email *</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="you@business.com"></div>
+<div class="field"><label for="phone">Business phone *</label><input id="phone" name="phone" type="tel" required autocomplete="tel" placeholder="Phone number"></div>
+<div class="field full"><label for="address">Business address *</label><input id="address" name="address" required autocomplete="street-address" placeholder="Street address"></div>
+<div class="field"><label for="city">City *</label><input id="city" name="city" required autocomplete="address-level2"></div>
+<div class="field"><label for="state">State *</label><input id="state" name="state" required autocomplete="address-level1" placeholder="State"></div>
+<div class="field full"><label for="service-area">Service area (optional)</label><input id="service-area" name="service-area" placeholder="Cities or neighborhoods you serve"></div>
+</div>
+<div class="note"><strong>Founding Business offer:</strong> Founding membership terms, introductory period, and any future pricing will be confirmed directly with each participating business before enrollment. Submitting this form does not create a paid subscription.</div>
+<h2>Proposed Coupon or Special Offer (Optional)</h2>
+<div class="grid">
+<div class="field"><label for="offer-title">Offer title</label><input id="offer-title" name="offer-title" placeholder="e.g., 15% off an oil change"></div>
+<div class="field"><label for="expiry">Proposed expiration date</label><input id="expiry" name="expiry" type="date"></div>
+<div class="field full"><label for="details">Describe the offer and any restrictions</label><textarea id="details" name="details" placeholder="Describe what customers receive and any terms or exclusions."></textarea></div>
+<div class="field full"><label for="message">Anything else we should know?</label><textarea id="message" name="message" placeholder="Optional"></textarea></div>
+</div>
+<div class="note" id="form-note" hidden><strong>Preview only:</strong> This form is not connected to a submission service yet, so your information has not been sent. Auto Bar must connect the form to a secure form or database service before accepting real registrations.</div>
+<div class="actions"><button type="submit">Submit Founding Business Interest</button><span class="fine">Your coupon will not be published until Auto Bar confirms the details with you.</span></div>
+</form>
+</main>
+<footer>© Auto Bar · Click. Save. Drive.</footer>
+</body>
+</html>
