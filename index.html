@@ -1,88 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto Bar — Click. Save. Drive.</title>
-  <style>
-    :root { --red: #d71920; --ink: #111318; --muted: #626875; --paper: #f5f6f8; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--paper); color: var(--ink); }
-    header { background: var(--ink); color: white; padding: 22px 6%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { font-size: 1.7rem; font-weight: 900; letter-spacing: 1px; }
-    .brand span { color: var(--red); }
-    nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: 700; font-size: .95rem; }
-    .hero { padding: 76px 6% 68px; background: linear-gradient(120deg, #17191f, #30343d); color: white; }
-    .eyebrow { color: #ff6268; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
-    h1 { font-size: clamp(2.7rem, 7vw, 5.4rem); line-height: .98; max-width: 850px; margin: 18px 0; letter-spacing: -2px; }
-    h1 span { color: #ff343c; }
-    .hero p { font-size: 1.2rem; line-height: 1.6; color: #e1e3e8; max-width: 650px; }
-    .button { display: inline-block; margin-top: 18px; background: var(--red); color: white; border: 0; border-radius: 7px; padding: 14px 22px; font-size: 1rem; font-weight: 800; text-decoration: none; cursor: pointer; }
-    main { max-width: 1120px; margin: auto; padding: 44px 6%; }
-    .section-title { font-size: 2rem; margin: 0 0 10px; }
-    .sub { color: var(--muted); margin: 0 0 26px; line-height: 1.5; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-    .card { background: white; border-radius: 14px; padding: 22px; box-shadow: 0 5px 20px #1113180d; border: 1px solid #e7e9ee; }
-    .icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px; background: #ffe7e8; color: var(--red); font-size: 1.4rem; font-weight: 900; }
-    .card h3 { margin: 15px 0 8px; }
-    .card p { color: var(--muted); line-height: 1.5; }
-    .wallet { margin-top: 38px; }
-    .coupon { display:flex; justify-content:space-between; align-items:center; gap:16px; border: 1px dashed #c8ccd5; padding:16px; border-radius:10px; margin-top:12px; background:#fff; }
-    .coupon strong { display:block; }
-    .coupon small { color:var(--muted); display:block; margin-top:5px; }
-    .save { background:var(--ink); color:white; border:0; border-radius:6px; padding:10px 14px; font-weight:700; cursor:pointer; }
-    #savedList { padding-left:20px; color:var(--muted); }
-    footer { background:var(--ink); color:#d5d7dc; padding:25px 6%; text-align:center; margin-top:30px; }
-    @media (max-width:600px) { header { align-items:flex-start; flex-direction:column; } nav a { margin:0 14px 0 0; } .hero { padding-top:54px; } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d71920">
+<meta name="description" content="Auto Bar helps drivers discover automotive deals, save coupons, and find trusted local shops.">
+<title>Auto Bar — Click. Save. Drive.</title>
+<style>
+:root{--red:#e50914;--red-dark:#bf0710;--ink:#101114;--muted:#646873;--line:#e8e8eb;--paper:#f5f5f6;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+a{color:inherit}.wrap{width:min(1240px,92%);margin:auto}
+header{background:#fff;border-bottom:1px solid #ececef;position:sticky;top:0;z-index:5}
+.navbar{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:block;width:250px;max-width:42vw}.brand img{display:block;width:100%;height:auto}
+nav{display:flex;align-items:center;gap:25px;font-size:14px;font-weight:700}nav a{text-decoration:none;white-space:nowrap}nav a:hover,nav a.active{color:var(--red)}
+.nav-actions{display:flex;align-items:center;gap:10px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;text-decoration:none;border:0;border-radius:9px;padding:13px 19px;font-weight:800;cursor:pointer;box-shadow:0 4px 12px #e5091422}.btn:hover{background:var(--red-dark)}.btn.secondary{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.hero{background:#111 url('autobar-hero.jpg') center/cover no-repeat;color:#fff;position:relative;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.97) 0%,rgba(0,0,0,.86) 38%,rgba(0,0,0,.22) 100%);z-index:-1}
+.hero-inner{padding:70px 0 66px;min-height:330px;display:flex;align-items:center}.hero-copy{max-width:570px}
+.eyebrow{color:#ff454d;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:900}
+h1{font-size:clamp(2.7rem,5vw,4.6rem);line-height:.98;letter-spacing:-2px;margin:15px 0 18px}h1 span{color:var(--red)}
+.hero p{font-size:18px;line-height:1.55;color:#eee;max-width:520px;margin:0 0 23px}.hero-links{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.text-link{color:#fff;text-decoration:none;font-weight:700}
+.features{background:#fff;border-bottom:1px solid var(--line)}.feature-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;padding:25px 0}
+.feature{text-align:center;padding:4px 10px}.feature-icon{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#111;color:#fff;font-size:22px;margin:0 auto 10px}.feature:first-child .feature-icon{background:var(--red)}.feature h3{font-size:15px;margin:0 0 5px}.feature p{font-size:13px;color:var(--muted);line-height:1.4;margin:0}
+section.content{padding:42px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px}.section-head h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 7px;letter-spacing:-.5px}.section-head p{color:var(--muted);margin:0;line-height:1.45}.link-red{color:var(--red);font-weight:800;text-decoration:none;white-space:nowrap}
+.deals-section{background:#111;color:#fff}.deals-section .section-head p{color:#c9c9ce}.deal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.deal{background:#fff;color:var(--ink);border:1px solid #e5e5e8;border-radius:12px;overflow:hidden;display:grid;grid-template-columns:42% 1fr;min-height:130px}
+.deal img{width:100%;height:100%;min-height:130px;object-fit:cover}.deal-info{padding:13px 12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.shop{font-size:11px;color:var(--muted);font-weight:700}.deal h3{font-size:14px;margin:5px 0}.discount{font-size:23px;letter-spacing:-.6px;color:var(--red);font-weight:900;margin-bottom:9px}.deal .btn{font-size:12px;padding:9px 10px;border-radius:7px;box-shadow:none}
+.panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:23px;box-shadow:0 5px 18px #11111108}.panel h3{margin:10px 0 8px}.panel p{color:var(--muted);line-height:1.5;margin:0 0 16px}.panel .feature-icon{margin:0;width:44px;height:44px;border-radius:12px}
+.wallet-box{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start}.wallet-intro{background:var(--red);color:#fff;border-radius:16px;padding:28px}.wallet-intro p{color:#fff;line-height:1.5}.coupon-list{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}.coupon{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:13px 0}.coupon:last-child{border:0}.coupon small{display:block;color:var(--muted);margin-top:4px}.coupon button{flex-shrink:0;background:#111;color:#fff;border:0;border-radius:7px;padding:9px 11px;font-weight:700;cursor:pointer}
+.partners{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.partner{background:#fff;border:1px solid var(--line);border-radius:11px;padding:20px 12px;text-align:center;font-weight:900}.partner span{display:block;color:var(--red);font-size:12px;margin-top:8px}
+.business-cta{background:#16171b;color:#fff;border-radius:16px;padding:32px;display:flex;justify-content:space-between;align-items:center;gap:20px}.business-cta h2{margin:0 0 8px}.business-cta p{margin:0;color:#d4d4d8;line-height:1.5}
+footer{background:#0d0e10;color:#d5d5d8;padding:28px 0;margin-top:10px}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}.footer-brand{font-weight:900}.footer-brand span{color:var(--red)}
+.notice{font-size:12px;color:var(--muted);margin-top:15px;line-height:1.45}
+.mobile-menu{display:none}
+@media(max-width:1000px){nav{gap:13px}.nav-actions .secondary{display:none}.deal-grid{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.navbar{padding:12px 0;min-height:65px;flex-wrap:wrap}.brand{width:190px}nav{order:3;width:100%;overflow-x:auto;padding:7px 0 3px;gap:20px}.nav-actions{margin-left:auto}.nav-actions .btn{padding:10px 12px;font-size:12px}.hero-inner{min-height:330px;padding:50px 0}.hero:before{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.62))}h1{letter-spacing:-1px}.hero p{font-size:16px}.feature-grid{grid-template-columns:repeat(2,1fr);gap:18px 10px}.feature:last-child{grid-column:1/-1}.section-head{align-items:flex-start;flex-direction:column}.deal-grid{grid-template-columns:1fr}.deal{min-height:120px}.deal img{min-height:120px}.panel-grid,.wallet-box{grid-template-columns:1fr}.partners{grid-template-columns:repeat(2,1fr)}.business-cta{align-items:flex-start;flex-direction:column;padding:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="brand">AUTO <span>BAR</span></div>
-    <nav><a href="#deals">Deals</a><a href="#wallet">My Wallet</a></nav>
-  </header>
-  <section class="hero">
-    <div class="eyebrow">Your next deal starts here</div>
-    <h1>CLICK. SAVE.<br><span>DRIVE.</span></h1>
-    <p>Find automotive deals, save coupons, and discover offers from participating shops—all in one place.</p>
-    <a class="button" href="#deals">Explore Deals</a>
-  </section>
-  <main>
-    <section id="deals">
-      <h2 class="section-title">Deals worth pulling over for.</h2>
-      <p class="sub">A preview of how Auto Bar can bring automotive offers together. Sample offers below are placeholders.</p>
-      <div class="grid">
-        <article class="card"><div class="icon">%</div><h3>Oil Change Offer</h3><p>Save on your next oil change at a participating service shop.</p></article>
-        <article class="card"><div class="icon">★</div><h3>Detailing Special</h3><p>Find a deal to help your ride look its best inside and out.</p></article>
-        <article class="card"><div class="icon">⌖</div><h3>Local Auto Shops</h3><p>Discover nearby automotive businesses and their offers.</p></article>
-      </div>
-    </section>
-    <section class="wallet" id="wallet">
-      <h2 class="section-title">Your coupon wallet</h2>
-      <p class="sub">Try saving a sample coupon. This demo stores saved items in this browser only; it does not sync between devices or create an account.</p>
-      <div class="coupon"><div><strong>Sample: 10% off detailing</strong><small>Demo coupon · Not a redeemable offer</small></div><button class="save" onclick="saveCoupon()">Save coupon</button></div>
-      <h3>Saved coupons</h3>
-      <ul id="savedList"><li>No coupons saved yet.</li></ul>
-    </section>
-  </main>
-  <footer>© <span id="year"></span> Auto Bar · Click. Save. Drive.</footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function saveCoupon() {
-      const key = 'autobar-demo-coupons';
-      const items = JSON.parse(localStorage.getItem(key) || '[]');
-      if (!items.includes('10% off detailing (sample)')) items.push('10% off detailing (sample)');
-      localStorage.setItem(key, JSON.stringify(items));
-      renderCoupons();
-    }
-    function renderCoupons() {
-      const items = JSON.parse(localStorage.getItem('autobar-demo-coupons') || '[]');
-      const list = document.getElementById('savedList');
-      list.innerHTML = '';
-      if (!items.length) { list.innerHTML = '<li>No coupons saved yet.</li>'; return; }
-      items.forEach(item => { const li = document.createElement('li'); li.textContent = item; list.appendChild(li); });
-    }
-    renderCoupons();
-  </script>
-</body>
-</html>
+<header>
+ <div class="wrap navbar">
+  <a class="brand" href="#home" aria-label="Auto Bar home"><img src="autobar-logo.png" alt="Auto Bar — Click. Save. Drive."></a>
+  <nav aria-label="Main navigation"><a class="active" href="#home">Home</a><a href="#wallet">My Wallet</a><a href="#deals">Find Deals</a><a href="#affiliates">Affiliates</a><a href="#businesses">For Businesses</a></nav>
+  <div class="nav-actions"><a class="btn secondary" href="#wallet">Sign In</a><a class="btn" href="#businesses">Sign Up</a></div>
+ </div>
+</header>
+<main id="home">
+ <section class="hero"><div class="wrap hero-inner"><div class="hero-copy">
+  <div class="eyebrow">Your next deal starts here</div>
+  <h1>Every Auto Deal.<br><span>One Wallet.</span></h1>
+  <p>Save on service, parts, accessories and more with trusted local shops. Keep all your automotive coupons in one place.</p>
+  <div class="hero-links"><a class="btn" href="#deals">⌖ &nbsp; Find Deals Near Me&nbsp; →</a><a class="text-link" href="#how">▶ &nbsp; Watch How It Works</a></div>
+ </div></div></section>
+ <section class="features"><div class="wrap feature-grid">
+  <div class="feature"><div class="feature-icon">▣</div><h3>Digital Wallet</h3><p>Keep all your automotive coupons in one place</p></div>
+  <div class="feature"><div class="feature-icon">⌖</div><h3>Find Local Deals</h3><p>Discover trusted partner shops</p></div>
+  <div class="feature"><div class="feature-icon">➤</div><h3>Get Directions</h3><p>Find your way to participating businesses</p></div>
+  <div class="feature"><div class="feature-icon">✦</div><h3>Exclusive Offers</h3><p>Save on service, parts, and more</p></div>
+  <div class="feature"><div class="feature-icon">♧</div><h3>Partner & Affiliate Deals</h3><p>More ways to save with trusted brands</p></div>
+ </div></section>
+ <section class="content deals-section" id="deals"><div class="wrap">
+  <div class="section-head"><div><h2>Featured Deals Near You</h2><p>Explore sample automotive offers from local shops.</p></div><a class="link-red" href="#local">View All Deals&nbsp; →</a></div>
+  <div class="deal-grid">
+   <article class="deal"><img src="autobar-hero.jpg" alt="Automotive service"><div class="deal-info"><span class="shop">QUICK LUBE PRO</span><h3>Oil Change Special</h3><div class="discount">$25 OFF</div><button class="btn" onclick="saveCoupon('Oil Change Special — $25 OFF')">Save to Wallet</button></div></article>
+   <article class="deal"><img src="autobar-hero.jpg" alt="Car wheel and tire"><div class="deal-info"><span class="shop">TIRE WORLD</span><h3>Tire Rotation</h3><div class="discount">$10 OFF</div><button class="btn" onclick="saveCoupon('Tire Rotation — $10 OFF')">Save to Wallet</button></div></article>
+   <article class="deal"><img src="autobar-hero.jpg" alt="Brake service"><div class="deal-info"><span class="shop">BRAKE MASTERS</span><h3>Brake Service</h3><div class="discount">15% OFF</div><button class="btn" onclick="saveCoupon('Brake Service — 15% OFF')">Save to Wallet</button></div></article>
+   <article class="deal"><img src="autobar-hero.jpg" alt="Car wash"><div class="deal-info"><span class="shop">CLEAN RIDE</span><h3>Car Wash</h3><div class="discount">$5 OFF</div><button class="btn" onclick="saveCoupon('Car Wash — $5 OFF')">Save to Wallet</button></div></article>
+  </div><p class="notice">Demo only: these sample offers are not real or redeemable coupons. No businesses are currently connected.</p>
+ </div></section>
+ <section class="content" id="how"><div class="wrap"><div class="section-head"><div><h2>Auto deals, made simple</h2><p>A simple preview of how Auto Bar is intended to work.</p></div></div>
+  <div class="panel-grid"><article class="panel"><div class="feature-icon">▣</div><h3>Save Your Coupons</h3><p>Keep favorite offers together in one easy-to-find wallet on this browser.</p><a class="link-red" href="#wallet">Open My Wallet →</a></article><article class="panel" id="local"><div class="feature-icon">⌖</div><h3>Find Local Shops</h3><p>Browse participating automotive businesses and their available offers.</p><a class="link-red" href="#deals">Browse Sample Deals →</a></article><article class="panel"><div class="feature-icon">✦</div><h3>Enjoy Partner Offers</h3><p>Discover featured brands and affiliate opportunities in one place.</p><a class="link-red" href="#affiliates">Explore Partners →</a></article></div>
+ </div></section>
+ <section class="content" id="wallet"><div class="wrap"><div class="section-head"><div><h2>My Coupon Wallet</h2><p>Your saved sample coupons appear below in this browser.</p></div></div>
+  <div class="wallet-box"><div class="wallet-intro"><h3>All your automotive coupons in one place.</h3><p>Save an offer from Featured Deals and it will appear in your demo wallet. This preview does not create an account or sync across devices.</p><a class="btn secondary" href="#deals">Find Deals</a></div><div class="coupon-list"><h3 style="margin-top:0">Saved Coupons</h3><ul id="savedList" style="padding-left:20px;color:var(--muted)"><li>No coupons saved yet.</li></ul><button class="btn secondary" onclick="clearCoupons()">Clear demo wallet</button></div></div>
+ </div></section>
+ <section class="content" id="affiliates"><div class="wrap"><div class="section-head"><div><h2>Affiliates & Partners</h2><p>Partner and affiliate brands can be featured here as the program grows.</p></div></div>
+  <div class="partners"><div class="partner">Auto Parts<span>Partner spot</span></div><div class="partner">Accessories<span>Partner spot</span></div><div class="partner">Insurance<span>Partner spot</span></div><div class="partner">Roadside Help<span>Partner spot</span></div></div><p class="notice">Brand names above are category placeholders, not endorsements or active affiliate relationships.</p>
+ </div></section>
+ <section class="content" id="businesses"><div class="wrap"><div class="business-cta"><div><h2>Own an automotive business?</h2><p>Bring your offers to drivers looking for their next great deal.</p></div><a class="btn" href="mailto:hello@autobar.example?subject=Auto%20Bar%20Business%20Interest">I'm Interested&nbsp; →</a></div><p class="notice">Business registration, paid plans, coupon publishing, payments, user accounts, and affiliate tracking are not active in this static preview. The contact address is a placeholder and must be replaced before launch.</p></div></section>
+</main>
+<footer><div class="wrap footer-inner"><div class="footer-brand">Auto Bar <span>·</span> Click. Save. Drive.</div><div>© <span id="year"></span> Auto Bar</div></div></footer>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const key='autobar-demo-coupons';
+function renderCoupons(){const items=JSON.parse(localStorage.getItem(key)||'[]');const list=document.getElementById('savedList');list.replaceChildren();if(!items.length){const li=document.createElement('li');li.textContent='No coupons saved yet.';list.appendChild(li);return;}items.forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li);});}
+function saveCoupon(coupon){const items=JSON.parse(localStorage.getItem(key)||'[]');if(!items.includes(coupon))items.push(coupon);localStorage.setItem(key,JSON.stringify(items));renderCoupons();document.getElementById('wallet').scrollIntoView({behavior:'smooth'});}
+function clearCoupons(){localStorage.removeItem(key);renderCoupons();}
+renderCoupons();
+</script>
+</body></html>
