@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,5 +91,14 @@ function renderCoupons(){const items=JSON.parse(localStorage.getItem(key)||'[]')
 function saveCoupon(coupon){const items=JSON.parse(localStorage.getItem(key)||'[]');if(!items.includes(coupon))items.push(coupon);localStorage.setItem(key,JSON.stringify(items));renderCoupons();document.getElementById('wallet').scrollIntoView({behavior:'smooth'});}
 function clearCoupons(){localStorage.removeItem(key);renderCoupons();}
 renderCoupons();
+ const SUPABASE_URL = "https://dcmrbmufxanqqfikimpb.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = sb_publishable_5A8JQQ0n3sgN1Pxf32DqYw_vdAL-_rY;
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
+console.log("AutoBar Supabase connected");
 </script>
 </body></html>
