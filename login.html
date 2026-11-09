@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoBar | Sign In</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      background: white;
+      width: 100%;
+      max-width: 420px;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.08);
+      text-align: center;
+    }
+
+    .brand img {
+      width: 180px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h2 { margin-bottom: 8px; }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #e50914;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #message {
+      margin-top: 18px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: #e50914;
+      text-decoration: none;
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-box">
+
+    <a class="brand" href="index.html">
+      <img src="autobar-logo.png" alt="AutoBar">
+    </a>
+
+    <h2>Welcome Back!</h2>
+    <p class="subtitle">Sign in to your AutoBar account.</p>
+
+    <form id="loginForm">
+      <input
+        type="email"
+        id="email"
+        placeholder="Email Address"
+        required
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+        required
+      >
+
+      <button type="submit" id="loginButton">
+        Sign In
+      </button>
+    </form>
+
+    <div id="message" role="status"></div>
+
+    <div class="footer">
+      Don't have an account?
+      <a href="signup.html">Create Account</a>
+    </div>
+
+  </div>
+
+  <script>
+    const SUPABASE_URL =
+      "https://dcmrbmufxanqqfikimpb.supabase.co";
+
+    // Use the same publishable key already in signup.html.
+    const SUPABASE_PUBLISHABLE_KEY =
+      "PASTE_YOUR_EXISTING_PUBLISHABLE_KEY_HERE";
+
+    const supabaseClient = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const loginForm = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+    const loginButton = document.getElementById("loginButton");
+
+    loginForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      message.textContent = "";
+      loginButton.disabled = true;
+      loginButton.textContent = "Signing in...";
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const { data, error } =
+          await supabaseClient.auth.signInWithPassword({
+            email,
+            password
+          });
+
+        if (error) throw error;
+
+        message.style.color = "green";
+        message.textContent = "Sign-in successful! Opening your dashboard...";
+
+        window.location.href = "business-dashboard.html";
+
+      } catch (error) {
+        message.style.color = "#e50914";
+        message.textContent = error.message;
+      }
+
+      loginButton.disabled = false;
+      loginButton.textContent = "Sign In";
+    });
+  </script>
+
+</body>
+</html>
