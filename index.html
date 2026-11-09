@@ -100,5 +100,12 @@ const supabaseClient = window.supabase.createClient(
 );
 
 console.log("AutoBar Supabase connected");
+supabaseClient
+  .from("test_connection")
+  .select("*")
+  .then(({ data, error }) => {
+    console.log("Supabase test result:", { data, error });
+  });
+ 
 </script>
 </body></html>
