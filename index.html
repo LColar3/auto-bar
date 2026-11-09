@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <head>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#d71920">
@@ -92,7 +92,7 @@ function saveCoupon(coupon){const items=JSON.parse(localStorage.getItem(key)||'[
 function clearCoupons(){localStorage.removeItem(key);renderCoupons();}
 renderCoupons();
  const SUPABASE_URL = "https://dcmrbmufxanqqfikimpb.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = sb_publishable_5A8JQQ0n3sgN1Pxf32DqYw_vdAL-_rY;
+const SUPABASE_PUBLISHABLE_KEY ="sb_publishable_5A8JQQ0n3sgN1Pxf32DqYw_vdAL-_rY";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
